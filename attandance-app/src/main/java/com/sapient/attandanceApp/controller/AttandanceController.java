@@ -1,4 +1,4 @@
-package com.sapient.firstkafka.controller;
+package com.sapient.attandanceApp.controller;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sapient.firstkafka.entity.Attendance;
-import com.sapient.firstkafka.service.AttendanceService;
+import com.sapient.attandanceApp.entity.Attendance;
+import com.sapient.attandanceApp.service.AttendanceService;
 
 @RestController
 public class AttandanceController {
@@ -36,7 +36,7 @@ public class AttandanceController {
 
 	}
 
-	@GetMapping("/createAttendance")
+	@GetMapping("/consumeKafkaEvents")
 	public void createAttendance() {
 		logger.info("createAttendance ");
 		attendanceService.createAttendance();

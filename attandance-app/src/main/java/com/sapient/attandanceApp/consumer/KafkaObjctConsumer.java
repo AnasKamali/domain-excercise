@@ -1,4 +1,4 @@
-package com.sapient.firstkafka.consumer;
+package com.sapient.attandanceApp.consumer;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -16,8 +16,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.sapient.firstkafka.entity.Event;
-import com.sapient.firstkafka.util.ObjectDeserializer;
+import com.sapient.attandanceApp.entity.Event;
+import com.sapient.attandanceApp.util.ObjectDeserializer;
 
 @Component
 public class KafkaObjctConsumer {

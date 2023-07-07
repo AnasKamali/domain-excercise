@@ -1,15 +1,15 @@
-package com.sapient.firstkafka.service;
+package com.sapient.attandanceApp.service;
 
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
-import com.sapient.firstkafka.consumer.KafkaObjctConsumer;
-import com.sapient.firstkafka.entity.Attendance;
-import com.sapient.firstkafka.entity.Attendance.AttandanceBuilder;
-import com.sapient.firstkafka.entity.Event;
-import com.sapient.firstkafka.repository.AttendanceRepository;
-import com.sapient.firstkafka.repository.EmployeeRepository;
+import com.sapient.attandanceApp.consumer.KafkaObjctConsumer;
+import com.sapient.attandanceApp.entity.Attendance;
+import com.sapient.attandanceApp.entity.Event;
+import com.sapient.attandanceApp.entity.Attendance.AttandanceBuilder;
+import com.sapient.attandanceApp.repository.AttendanceRepository;
+import com.sapient.attandanceApp.repository.EmployeeRepository;
 
 import jakarta.transaction.Transactional;
 

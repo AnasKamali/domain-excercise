@@ -1,4 +1,4 @@
-package com.sapient.firstkafka;
+package com.sapient.attandanceApp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.sapient.firstkafka.service;
+package com.sapient.attandanceApp.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.sapient.firstkafka.entity.Employee;
-import com.sapient.firstkafka.exception.EmployeeNotExistException;
-import com.sapient.firstkafka.repository.EmployeeRepository;
+import com.sapient.attandanceApp.entity.Employee;
+import com.sapient.attandanceApp.exception.EmployeeNotExistException;
+import com.sapient.attandanceApp.repository.EmployeeRepository;
 
 @Service
 public class EmployeeServiceImplementation implements EmployeeService {

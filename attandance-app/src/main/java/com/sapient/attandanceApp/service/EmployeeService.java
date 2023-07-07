@@ -1,9 +1,9 @@
-package com.sapient.firstkafka.service;
+package com.sapient.attandanceApp.service;
 
 import java.util.List;
 
-import com.sapient.firstkafka.entity.Employee;
-import com.sapient.firstkafka.exception.EmployeeNotExistException;
+import com.sapient.attandanceApp.entity.Employee;
+import com.sapient.attandanceApp.exception.EmployeeNotExistException;
 
 public interface EmployeeService {
 	

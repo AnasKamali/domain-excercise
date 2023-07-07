@@ -1,4 +1,4 @@
-package com.sapient.firstkafka.util;
+package com.sapient.attandanceApp.util;
 
 import java.nio.charset.StandardCharsets;
 
@@ -7,8 +7,8 @@ import org.apache.kafka.common.serialization.Deserializer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.sapient.firstkafka.entity.Event;
-import com.sapient.firstkafka.exception.DeserializationException;
+import com.sapient.attandanceApp.entity.Event;
+import com.sapient.attandanceApp.exception.DeserializationException;
 
 public class ObjectDeserializer implements Deserializer<Event> {
 

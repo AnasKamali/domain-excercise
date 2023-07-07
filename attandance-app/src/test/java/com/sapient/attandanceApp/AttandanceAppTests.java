@@ -1,10 +1,10 @@
-package com.sapient.firstkafka;
+package com.sapient.attandanceApp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FirstKafkaApplicationTests {
+class AttandanceAppTests {
 
 	@Test
 	void contextLoads() {

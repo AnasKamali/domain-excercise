@@ -1,4 +1,4 @@
-package com.sapient.firstkafka.exception;
+package com.sapient.attandanceApp.exception;
 
 public class DeserializationException extends RuntimeException {
 	public DeserializationException(String message) {

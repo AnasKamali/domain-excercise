@@ -1,4 +1,4 @@
-package com.sapient.firstkafka.entity;
+package com.sapient.attandanceApp.entity;
 
 import java.time.LocalDate;
 

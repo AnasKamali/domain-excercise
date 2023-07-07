@@ -1,4 +1,4 @@
-package com.sapient.firstkafka.controller;
+package com.sapient.attandanceApp.controller;
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sapient.firstkafka.entity.Employee;
-import com.sapient.firstkafka.exception.EmployeeNotExistException;
-import com.sapient.firstkafka.service.EmployeeService;
+import com.sapient.attandanceApp.entity.Employee;
+import com.sapient.attandanceApp.exception.EmployeeNotExistException;
+import com.sapient.attandanceApp.service.EmployeeService;
 
 @RestController
 public class EmployeeController {

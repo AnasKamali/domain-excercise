@@ -8,14 +8,14 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class FirstKafkaApplication {
+public class EventApplication {
 	@Bean
 	public RestTemplate getRestTemplate() {
 		return new RestTemplate();
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(FirstKafkaApplication.class, args);
+		SpringApplication.run(EventApplication.class, args);
 	}
 
 }

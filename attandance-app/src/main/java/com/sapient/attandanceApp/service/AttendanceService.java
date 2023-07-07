@@ -1,11 +1,11 @@
-package com.sapient.firstkafka.service;
+package com.sapient.attandanceApp.service;
 
 import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.sapient.firstkafka.entity.Attendance;
+import com.sapient.attandanceApp.entity.Attendance;
 
 public interface AttendanceService {
 
