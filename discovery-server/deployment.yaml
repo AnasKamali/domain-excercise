@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  labels:
+    app: service-discovery
+  name: service-discovery
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-discovery
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: service-discovery
+    spec:
+      containers:
+      - image: mak8docker/discovery-server:0.0.1-SNAPSHOT
+        imagePullPolicy: IfNotPresent
+        name: discovery-server
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: service-discovery
+  name: service-discovery
+  namespace: default
+spec:
+  ports:
+  - port: 8084
+    protocol: TCP
+    targetPort: 8084
+  selector:
+    app: service-discovery
+  sessionAffinity: None
+  type: LoadBalancer
+
+
