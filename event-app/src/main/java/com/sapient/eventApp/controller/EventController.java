@@ -4,18 +4,18 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Collection;
 import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import com.sapient.eventApp.entity.Event;
 import com.sapient.eventApp.exception.EventDoesNotExistsException;
 import com.sapient.eventApp.service.EventService;
+
 
 @RestController
 public class EventController {

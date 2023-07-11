@@ -37,9 +37,9 @@ public class AttandanceController {
 	}
 
 	@GetMapping("/consumeKafkaEvents")
-	public void createAttendance() {
+	public void consumeKafkaEvents() {
 		logger.info("createAttendance ");
-		attendanceService.createAttendance();
+		attendanceService.consumeAttendanceEvents();
 
 	}
 

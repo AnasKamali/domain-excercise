@@ -13,6 +13,6 @@ public interface AttendanceService {
 
 	public List<Attendance> getAttandanceByEmployeeId(int id);
 
-	public void createAttendance();
+	public void consumeAttendanceEvents();
 
 }

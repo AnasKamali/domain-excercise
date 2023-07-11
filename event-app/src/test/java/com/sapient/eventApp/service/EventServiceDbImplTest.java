@@ -1,10 +1,13 @@
 package com.sapient.eventApp.service;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.when;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -18,17 +21,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.sapient.eventApp.entity.Event;
-import com.sapient.eventApp.entity.EventId;
 import com.sapient.eventApp.exception.EventDoesNotExistsException;
 import com.sapient.eventApp.repository.EventRepository;
-
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.willDoNothing;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class EventServiceDbImplTest {
@@ -40,14 +34,12 @@ class EventServiceDbImplTest {
 
 	private Optional<Event> eventOptional;
 	private Event event;
-	private EventId eventId;
 	private int id;
 	private LocalDate eventDate;
 
 	@BeforeEach
 	public void setup() {
 		id = 1;
-		eventId = new EventId(id, LocalDate.now());
 		event = new Event(id, LocalDate.now(), LocalTime.now(),
 				LocalTime.now().plus(Long.valueOf(8l), ChronoUnit.HOURS));
 		eventOptional = Optional.of(event);

@@ -39,7 +39,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 
 	@Override
 	@Transactional
-	public void createAttendance() {
+	public void consumeAttendanceEvents() {
 		List<Event> events = kafkaObjctConsumer.consumeAttendance();
 		for (Event event : events) {
 			if (employeeRepository.existsById(event.getId())) {

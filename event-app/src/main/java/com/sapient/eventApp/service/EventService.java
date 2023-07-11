@@ -7,6 +7,7 @@ import java.util.List;
 import com.sapient.eventApp.entity.Event;
 import com.sapient.eventApp.exception.EventDoesNotExistsException;
 
+
 public interface EventService {
 
 	String createEventOnSwipeIn(int id);

@@ -41,7 +41,8 @@ public class EmployeeController {
 	@PostMapping("/employee")
 	public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
 		logger.info("creating {}",employee);
-		return ResponseEntity.status(HttpStatus.CREATED).body(employeeService.createEmployee(employee));
+		 ResponseEntity<Employee> body = ResponseEntity.status(HttpStatus.CREATED).body(employeeService.createEmployee(employee));
+		 return body;
 	}
 
 	@DeleteMapping("/employee/{id}")

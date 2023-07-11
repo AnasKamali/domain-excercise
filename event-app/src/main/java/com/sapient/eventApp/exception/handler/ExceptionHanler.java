@@ -12,6 +12,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.sapient.eventApp.exception.EventDoesNotExistsException;
 
+
 @ControllerAdvice
 public class ExceptionHanler {
 

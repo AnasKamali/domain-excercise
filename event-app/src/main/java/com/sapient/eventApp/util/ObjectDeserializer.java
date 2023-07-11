@@ -14,11 +14,11 @@ public class ObjectDeserializer implements Deserializer<Event> {
 
 	@Override
 	public Event deserialize(String topic, byte[] data) {
-		 ObjectMapper objectMapper = new ObjectMapper();
-		 objectMapper.registerModule(new JavaTimeModule());
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.registerModule(new JavaTimeModule());
 		try {
 			return objectMapper.readValue(new String(data, StandardCharsets.UTF_8), Event.class);
-		} catch ( JsonProcessingException e) {
+		} catch (JsonProcessingException e) {
 			throw new SerializationException(e.getLocalizedMessage());
 		}
 	}
