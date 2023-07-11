@@ -35,7 +35,7 @@ Milestone 4: Testing Phase
 1.	Testing: 
 a.	Junit> Code Coverage >80%<br/>
 [eventAppTestCases](https://github.com/AnasKamali/domain-excercise/tree/main/event-app/src/test/java/com/sapient/eventApp)<br/>
-[attandanceAppTestCase](https://github.com/AnasKamali/domain-excercise/tree/main/attandance-app/src/test/java/com/sapient/attandanceApp)
+[attandanceAppTestCase](https://github.com/AnasKamali/domain-excercise/tree/main/attandance-app/src/test/java/com/sapient/attandanceApp)<br/>
 b.	SIT (BDD: Cucumber or Karate)
 c.	JMeter
 3.	Build & Release pipeline: Set up pipeline & Reporting
