@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +29,7 @@ public class EventServiceDbImpl implements EventService {
 
 	@Override
 	@Transactional
-	public String createEvent(int id) {
+	public String createEventOnSwipeIn(int id) {
 		Optional<Event> findById = eventRepository.findById(new EventId(id, LocalDate.now()));
 		if (findById.isEmpty()) {
 			eventRepository.save(new Event(id, LocalDate.now(), LocalTime.now(), null));
@@ -42,7 +41,7 @@ public class EventServiceDbImpl implements EventService {
 
 	@Override
 	@Transactional
-	public String updateEvent(Event event) throws EventDoesNotExistsException {
+	public String updateEventOnSwipeOut(Event event) throws EventDoesNotExistsException {
 		Optional<Event> findById = eventRepository.findById(new EventId(event.getId(), event.getDate()));
 		if (findById.isEmpty()) {
 			throw new EventDoesNotExistsException("event does not exists:" + event);
@@ -58,7 +57,7 @@ public class EventServiceDbImpl implements EventService {
 	@Override
 	@Transactional
 	public List<Event> calculateAttandanceForDate(LocalDate eventDate) {
-		Set<Event> events = eventRepository.findByEventDate(eventDate);
+		List<Event> events = eventRepository.findByEventDate(eventDate);
 		for (Event e : events) {
 			int duration = (int) Duration.between(e.getSwipeInTime(), e.getSwipeOutTime()).toHours();
 			e.setTotalHourAttanded(duration);
@@ -74,8 +73,8 @@ public class EventServiceDbImpl implements EventService {
 	}
 
 	@Override
-	public Set<Event> produceEvent(LocalDate eventDate) {
-		Set<Event> events = eventRepository.findByEventDate(eventDate);
+	public List<Event> publishEvents(LocalDate eventDate) {
+		List<Event> events = eventRepository.findByEventDate(eventDate);
 		EventProducer.produceEvents(events);
 		return events;
 	}
