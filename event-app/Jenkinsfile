@@ -8,10 +8,14 @@ pipeline {
         stage('Build') { 
             steps {
 		    dir('event-app'){
-	                echo "Building" 
-			sh "mvn --version"
-			sh "ls -la"   
-			sh "mvn clean package"
+			echo "Building" 
+			sh '''
+   				env grep -e PATH -e JAVA_HOME
+       				java -version
+				mvn --version
+				ls -la   
+				mvn clean package
+			'''
 		    }
             }
         }
