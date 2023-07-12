@@ -4,19 +4,19 @@ pipeline {
         stage('Build') { 
             steps {
                 echo "Building" 
-                sh "mvn clean install -DskipTests"
+                sh "mvnw clean install -DskipTests"
             }
         }
         stage('Test') { 
             steps {
                 echo "Testing" 
-                sh "./mvn test"
+                sh "./mvnw test"
             }
         }
         stage('Deploy') { 
             steps {
                 echo "Deploying" 
-		sh "spring-boot:build-image"
+		sh "mvnw spring-boot:build-image"
             }
         }
     }
