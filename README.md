@@ -27,8 +27,8 @@ d.	configurations<br/>
 2.	API Security<br/>
 a.	O-Auth2.0<br/>
 b.	API Gateway<br/>
-      [discovery server](https://github.com/AnasKamali/domain-excercise/tree/main/discovery-server)
-       [api-gateway service](https://github.com/AnasKamali/domain-excercise/tree/main/api-gateway)
+      [discovery server](https://github.com/AnasKamali/domain-excercise/tree/main/discovery-server)<br/>
+       [api-gateway service](https://github.com/AnasKamali/domain-excercise/tree/main/api-gateway)<br/>
 3.	Logging & Tooling<br/>
 a.	Observability: Grafana, cloud monitoring<br/>
 4.	Exception handling<br/>
