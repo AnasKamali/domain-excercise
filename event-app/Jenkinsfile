@@ -10,7 +10,7 @@ pipeline {
 		    dir('event-app'){
 			echo "Building" 
 			sh '''
-   				env grep -e PATH -e JAVA_HOME
+   				env | grep -e PATH -e JAVA_HOME
        				java -version
 				mvn --version
 				ls -la   
