@@ -1,43 +1,44 @@
-# domain-excercise
+# domain-excercise<br/>
 
-
-Milestone 1: Architecture Artifacts & Design
-1.	Solution Architecture- 
-o	Logical Architecture, Physical Architecture, Business context diagram
-o	EDA Strategy and implementation with MS architecture
-o	NFRS managed
-2.	Sequence diagram: Features Implemented
-3.	Design:
-o	DDD & Bounded context
-o	Ready heavy – CQRS
-o	DB selections (NOSQL + RDBMS), ER diagram
-Milestone 2: Set up MVP
-1.	CONFIGURATION
-o	Configure Monitoring Dashboards - 7
-o	Use of Build Tools - 7
-o	Deployment of services on Cloud managed AKS using CI/CD Pipelines (Desired) – Refer to the Bonus Marks section below
-o	Kafka Set up
-
-Milestone 3: Build Phase
-1.	Microservices Ecosystem with Springboot 
-a.	Features Implemented
-b.	Springboot annotations
-c.	Transactions
-d.	configurations
-2.	API Security
-a.	O-Auth2.0
-b.	API Gateway
-3.	Logging & Tooling
-a.	Observability: Grafana, cloud monitoring
-4.	Exception handling
-
-Milestone 4: Testing Phase
-1.	Testing: 
+Milestone 1: Architecture Artifacts & Design<br/>
+1.	Solution Architecture- <br/>
+o	Logical Architecture, Physical Architecture, Business context diagram<br/>
+o	EDA Strategy and implementation with MS architecture<br/>
+o	NFRS managed<br/>
+2.	Sequence diagram: Features Implemented<br/>
+3.	Design:<br/>
+o	DDD & Bounded context<br/>
+o	Ready heavy – CQRS<br/>
+o	DB selections (NOSQL + RDBMS), ER diagram<br/>
+<br/>
+Milestone 2: Set up MVP<br/>
+1.	CONFIGURATION<br/>
+o	Configure Monitoring Dashboards - 7<br/>
+o	Use of Build Tools - 7<br/>
+o	Deployment of services on Cloud managed AKS using CI/CD Pipelines (Desired) – Refer to the Bonus Marks section below<br/>
+o	Kafka Set up<br/>
+<br/>
+Milestone 3: Build Phase<br/>
+1.	Microservices Ecosystem with Springboot <br/>
+a.	Features Implemented<br/>
+b.	Springboot annotations<br/>
+c.	Transactions<br/>
+d.	configurations<br/>
+2.	API Security<br/>
+a.	O-Auth2.0<br/>
+b.	API Gateway<br/>
+      [discovery server](https://github.com/AnasKamali/domain-excercise/tree/main/discovery-server)
+       [api-gateway service](https://github.com/AnasKamali/domain-excercise/tree/main/api-gateway)
+3.	Logging & Tooling<br/>
+a.	Observability: Grafana, cloud monitoring<br/>
+4.	Exception handling<br/>
+<br/>
+Milestone 4: Testing Phase<br/>
+1.	Testing: <br/>
 a.	Junit> Code Coverage >80%<br/>
 [eventAppTestCases](https://github.com/AnasKamali/domain-excercise/tree/main/event-app/src/test/java/com/sapient/eventApp)<br/>
 [attandanceAppTestCase](https://github.com/AnasKamali/domain-excercise/tree/main/attandance-app/src/test/java/com/sapient/attandanceApp)<br/>
-b.	SIT (BDD: Cucumber or Karate)
-c.	JMeter
-3.	Build & Release pipeline: Set up pipeline & Reporting
-4.	Entire solution deployable on cloud (Burner account)
-
+b.	SIT (BDD: Cucumber or Karate)<br/>
+c.	JMeter<br/>
+3.	Build & Release pipeline: Set up pipeline & Reporting<br/>
+4.	Entire solution deployable on cloud (Burner account)<br/>
