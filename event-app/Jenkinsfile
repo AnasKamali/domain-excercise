@@ -22,13 +22,22 @@ pipeline {
         stage('Test') { 
             steps {
                 echo "Testing" 
-                sh "./mvnw test"
+                dir('event-app'){
+			echo "Building" 
+			sh '''
+   				env | grep -e PATH -e JAVA_HOME
+       				java -version
+				mvn --version
+				ls -la   
+				mvn test
+			'''
+		    }"
             }
         }
         stage('Deploy') { 
             steps {
                 echo "Deploying" 
-		sh "mvnw spring-boot:build-image"
+		//sh "mvnw spring-boot:build-image"
             }
         }
     }
