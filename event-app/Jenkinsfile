@@ -4,19 +4,19 @@ pipeline {
         stage('Build') { 
             steps {
                 echo "Building" 
-                bash "mvn clean install -DskipTests"
+                sh "mvn clean install -DskipTests"
             }
         }
         stage('Test') { 
             steps {
                 echo "Testing" 
-                bash "mvn test"
+                sh "./mvn test"
             }
         }
         stage('Deploy') { 
             steps {
                 echo "Deploying" 
-		bash "spring-boot:build-image"
+		sh "spring-boot:build-image"
             }
         }
     }
