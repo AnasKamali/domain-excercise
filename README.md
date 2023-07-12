@@ -33,6 +33,7 @@ b.	API Gateway<br/>
       [discovery server](https://github.com/AnasKamali/domain-excercise/tree/main/discovery-server)<br/>
        [api-gateway service](https://github.com/AnasKamali/domain-excercise/tree/main/api-gateway)<br/>
 3.	Logging & Tooling<br/>
+Using zipkin for traceblity
 a.	Observability: Grafana, cloud monitoring<br/>
 4.	Exception handling<br/>
 [exception handler](https://github.com/AnasKamali/domain-excercise/tree/main/event-app/src/main/java/com/sapient/eventApp/exception/handler)
