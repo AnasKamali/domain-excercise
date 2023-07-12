@@ -8,12 +8,8 @@ pipeline {
             steps {
 		    dir('event-app'){
 	                echo "Building" 
-	                sh "export MAVEN_HOME=/opt/maven"
-			sh "export PATH=$PATH:$MAVEN_HOME/bin"
 			sh "mvn --version"
-			sh "ls -la" 
-			sh 'cd event-app'
-			sh "ls -la"    
+			sh "ls -la"   
 			sh "mvn clean package"
 		    }
             }
