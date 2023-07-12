@@ -10,7 +10,8 @@ pipeline {
                 sh "export MAVEN_HOME=/opt/maven"
 		sh "export PATH=$PATH:$MAVEN_HOME/bin"
 		sh "mvn --version"
-		sh 'cd event-app'
+		sh "cd event-app"
+		sh "ls -la"    
 		sh "mvn clean package"
             }
         }
