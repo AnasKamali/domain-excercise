@@ -21,9 +21,8 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                echo "Testing" 
                 dir('event-app'){
-			echo "Building" 
+			echo "Testing"
 			sh '''
    				env | grep -e PATH -e JAVA_HOME
        				java -version
@@ -31,7 +30,7 @@ pipeline {
 				ls -la   
 				mvn test
 			'''
-		    }"
+		    }
             }
         }
         stage('Deploy') { 
