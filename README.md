@@ -14,9 +14,12 @@ o	DB selections (NOSQL + RDBMS), ER diagram<br/>
 Milestone 2: Set up MVP<br/>
 1.	CONFIGURATION<br/>
 o	Configure Monitoring Dashboards - 7<br/>
+[discovery server](https://github.com/AnasKamali/domain-excercise/tree/main/discovery-server)<br/>
 o	Use of Build Tools - 7<br/>
 o	Deployment of services on Cloud managed AKS using CI/CD Pipelines (Desired) – Refer to the Bonus Marks section below<br/>
 o	Kafka Set up<br/>
+[kafkaimage](https://hub.docker.com/repository/docker/mak8docker/mykafka)<br/>
+[zookeperimage](https://hub.docker.com/repository/docker/mak8docker/myzookeper)
 <br/>
 Milestone 3: Build Phase<br/>
 1.	Microservices Ecosystem with Springboot <br/>
@@ -32,6 +35,7 @@ b.	API Gateway<br/>
 3.	Logging & Tooling<br/>
 a.	Observability: Grafana, cloud monitoring<br/>
 4.	Exception handling<br/>
+[exception handler](https://github.com/AnasKamali/domain-excercise/tree/main/event-app/src/main/java/com/sapient/eventApp/exception/handler)
 <br/>
 Milestone 4: Testing Phase<br/>
 1.	Testing: <br/>
@@ -42,3 +46,4 @@ b.	SIT (BDD: Cucumber or Karate)<br/>
 c.	JMeter<br/>
 3.	Build & Release pipeline: Set up pipeline & Reporting<br/>
 4.	Entire solution deployable on cloud (Burner account)<br/>
+      [deployment.yaml](https://github.com/AnasKamali/domain-excercise/blob/main/kubernetes/deployment.yaml)
