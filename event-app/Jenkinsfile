@@ -4,7 +4,8 @@ pipeline {
         stage('Build') { 
             steps {
                 echo "Building" 
-                sh "mvnw clean install -DskipTests"
+		    echo "maven version"
+                sh "./mvnw clean install -DskipTests"
             }
         }
         stage('Test') { 
