@@ -1,0 +1,43 @@
+pipeline {
+    agent any 
+    tools {
+	maven 'maven'
+	jdk 'adoptioum'
+    }
+    stages {
+        stage('Build') { 
+            steps {
+		    dir('attandance-app'){
+			echo "Building" 
+			sh '''
+   				env | grep -e PATH -e JAVA_HOME
+       				java -version
+				mvn --version
+				ls -la   
+				mvn clean package
+			'''
+		    }
+            }
+        }
+        stage('Test') { 
+            steps {
+                dir('attandance-app'){
+			echo "Testing"
+			sh '''
+   				env | grep -e PATH -e JAVA_HOME
+       				java -version
+				mvn --version
+				ls -la   
+				mvn test
+			'''
+		    }
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                echo "Deploying" 
+		//sh "mvnw spring-boot:build-image"
+            }
+        }
+    }
+}
