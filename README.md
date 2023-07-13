@@ -13,6 +13,7 @@ o	DDD & Bounded context<br/>
 [Design and Analysis Pdf](https://github.com/AnasKamali/domain-excercise/blob/main/Milestone1/Design%20and%20Analysis.pptx)<br/>
 o	Ready heavy – CQRS<br/>
 o	DB selections (NOSQL + RDBMS), ER diagram<br/>
+[ERDiagram and Scripts](https://github.com/AnasKamali/domain-excercise/blob/main/Milestone1/ER%20Diagram%20and%20Scripts.docx)<br/>
 <br/>
 Milestone 2: Set up MVP<br/>
 1.	CONFIGURATION<br/>
