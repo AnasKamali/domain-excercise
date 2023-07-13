@@ -8,6 +8,7 @@ o	EDA Strategy and implementation with MS architecture<br/>
 o	NFRS managed<br/>
 [NFRS.pdf](https://github.com/AnasKamali/domain-excercise/blob/main/Milestone1/NFRS.pdf)<br/>
 2.	Sequence diagram: Features Implemented<br/>
+[Sequence Diagram](https://github.com/AnasKamali/domain-excercise/blob/main/Milestone1/Sequential%20Diagrams.docx)
 3.	Design:<br/>
 o	DDD & Bounded context<br/>
 [Design and Analysis Pdf](https://github.com/AnasKamali/domain-excercise/blob/main/Milestone1/Design%20and%20Analysis.pptx)<br/>
