@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  labels:
+    app: attandance-app
+  name: attandance-app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: attandance-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: attandance-app
+    spec:
+      containers:
+      - image: mak8docker/attandance-app:0.0.1-SNAPSHOT
+        imagePullPolicy: IfNotPresent
+        name: api-gateway
+        env:
+          - name: EUREKA.CLIENT.SERVICEURL.DEFAULTZONE
+            value: http://service-discovery:8084/eureka/
+          - name: SPRING.DATASOURCE.URL
+            value: jdbc:mysql://attandance-db:3306/attandance_db
+      restartPolicy: Always
+
+
+
+

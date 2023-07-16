@@ -3,6 +3,7 @@ package com.sapient.eventApp.service;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
@@ -22,12 +23,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.sapient.eventApp.entity.Event;
 import com.sapient.eventApp.exception.EventDoesNotExistsException;
+import com.sapient.eventApp.producer.EventProducer;
 import com.sapient.eventApp.repository.EventRepository;
 
 @ExtendWith(MockitoExtension.class)
 class EventServiceDbImplTest {
 	@Mock
 	private EventRepository eventRepository;
+	@Mock
+	private EventProducer	 eventProducer;
 
 	@InjectMocks
 	private EventServiceDbImpl eventServiceDbImpl;
@@ -81,6 +85,14 @@ class EventServiceDbImplTest {
 		when(eventRepository.findByEventDate(ArgumentMatchers.any())).thenReturn(events);
 		when(eventRepository.saveAll(ArgumentMatchers.any())).thenReturn(events);
 		List<Event> calculateAttandanceForDate = eventServiceDbImpl.calculateAttandanceForDate(eventDate);
+		assertEquals(events.size(), calculateAttandanceForDate.size());
+	}
+	@Test
+	void publishEvents() {
+		List<Event> events = getEvents();
+		when(eventRepository.findByEventDate(ArgumentMatchers.any())).thenReturn(events);
+		doNothing().when(eventProducer).produceEvents(ArgumentMatchers.any());
+		List<Event> calculateAttandanceForDate = eventServiceDbImpl.publishEvents(eventDate);
 		assertEquals(events.size(), calculateAttandanceForDate.size());
 	}
 

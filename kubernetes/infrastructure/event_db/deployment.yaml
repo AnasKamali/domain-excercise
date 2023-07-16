@@ -1,0 +1,57 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  labels:
+    app: event-db
+    tier: database
+  name: event-db
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: event-db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: event-db
+        tier: database
+    spec:
+      containers:
+      - image: mysql:8.0
+        ports:
+        - containerPort: 3306
+          name: event-db
+        imagePullPolicy: IfNotPresent
+        name: event-db
+        env:
+          - name: MYSQL_DATABASE
+            value: event_db
+          - name: MYSQL_USER
+            value: anas
+          - name: MYSQL_PASSWORD
+            value: root
+          - name: MYSQL_ROOT_PASSWORD
+            value: root
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-db
+  labels:
+    app: event-db
+    tier: database
+spec:
+  ports:
+    - port: 3306
+      targetPort: 3306
+  selector:
+    app: event-db
+    tier: database
+  clusterIP: None 
+
+

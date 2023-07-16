@@ -1,19 +1,17 @@
 version: '2'
 services:
   service-discovery:
-    image: mak8docker/discovery-server:0.0.1-SNAPSHOT
+    image: mak8docker/discovery-server:0.0.2-SNAPSHOT
     cap_add:
       - SYS_NICE
     restart: always
     depends_on:
-      - attandance_db
-    networks:
-      - ms-network
+      - attandance-db
     ports:
       - '8084:8084'
 
   api_gateway:
-    image: mak8docker/api-gateway:0.0.1-SNAPSHOT
+    image: mak8docker/api-gateway:0.0.2-SNAPSHOT
     cap_add:
       - SYS_NICE
     restart: always
@@ -22,42 +20,46 @@ services:
     environment:
       EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://service-discovery:8084/eureka/
       MANAGEMENT.ZIPKIN.TRACING.ENDPOINT: http://zipkin:9411/api/v2/spans
-    networks:
-      - ms-network
     ports:
       - '8089:8089'
 
-  event_app:
-    image: mak8docker/event-app:0.0.1-SNAPSHOT
+  event-app:
+    image: mak8docker/event-app:0.0.2-SNAPSHOT
     cap_add:
       - SYS_NICE
     restart: always
     depends_on:
       - kafka
-    networks:
-      - ms-network
     environment:
-      SPRING.DATASOURCE.URL: jdbc:mysql://event_db:3306/event_db
+      SPRING.DATASOURCE.URL: jdbc:mysql://event-db:3306/event_db
       EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://service-discovery:8084/eureka/
       MANAGEMENT.ZIPKIN.TRACING.ENDPOINT: http://zipkin:9411/api/v2/spans
     ports:
       - '8081:8081'
 
-  attandance_app:
-    image: mak8docker/attandance-app:0.0.1-SNAPSHOT
+  attandance-app:
+    image: mak8docker/attandance-app:0.0.2-SNAPSHOT
     cap_add:
       - SYS_NICE
     restart: always
-    networks:
-      - ms-network
     environment:
       EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://service-discovery:8084/eureka/
-      SPRING.DATASOURCE.URL: jdbc:mysql://attandance_db:3306/attandance_db
+      SPRING.DATASOURCE.URL: jdbc:mysql://attandance-db:3306/attandance_db
       MANAGEMENT.ZIPKIN.TRACING.ENDPOINT: http://zipkin:9411/api/v2/spans
     ports:
       - '8080:8080'
+  
+  config-server:
+    image: mak8docker/config-server:0.0.2-SNAPSHOT
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      MANAGEMENT.ZIPKIN.TRACING.ENDPOINT: http://zipkin:9411/api/v2/spans
+    ports:
+      - '8088:8088'
 
-  event_db:
+  event-db:
     image: mysql:8.0
     cap_add:
       - SYS_NICE
@@ -67,22 +69,18 @@ services:
       - MYSQL_USER=anas
       - MYSQL_PASSWORD=root
       - MYSQL_ROOT_PASSWORD=root
-    networks:
-      - ms-network
     ports:
       - '23306:3306'
     volumes:
       - event_db:/var/lib/mysql
 
-  attandance_db:
+  attandance-db:
     image: mysql:8.0
     cap_add:
       - SYS_NICE
     restart: always
     depends_on:
-      - event_db
-    networks:
-      - ms-network
+      - event-db
     environment:
       - MYSQL_DATABASE=attandance_db
       - MYSQL_USER=anas
@@ -100,8 +98,6 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
     ports:
       - 22181:2181
-    networks:
-      - ms-network
   
   kafka:
     image: confluentinc/cp-kafka:latest
@@ -109,8 +105,6 @@ services:
       - zookeeper
     ports:
       - 29092:29092
-    networks:
-      - ms-network
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
@@ -124,10 +118,37 @@ services:
     restart: always
     ports:
       - '9411:9411'
-    networks:
-      - ms-network
-networks:
-  ms-network:
+
+  ## Prometheus
+  prometheus:
+    image: prom/prometheus:v2.37.1
+    container_name: prometheus
+    restart: always
+    ports:
+      - "9090:9090"
+    depends_on:
+      - attandance-app
+      - event-app
+      - config-server
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana-oss:8.5.2
+    container_name: grafana
+    restart: always
+    ports:
+      - "3000:3000"
+    links:
+      - prometheus:prometheus
+    volumes:
+      - ./grafana:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=password
+
+
+
 
 volumes:
   event_db:

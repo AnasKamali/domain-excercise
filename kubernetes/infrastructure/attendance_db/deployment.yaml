@@ -1,0 +1,55 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  labels:
+    app: attandance-db
+    tier: database
+  name: attandance-db
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: attandance-db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: attandance-db
+        tier: database
+    spec:
+      containers:
+      - image: mysql:8.0
+        ports:
+        - containerPort: 3306
+          name: attandance-db
+        imagePullPolicy: IfNotPresent
+        name: attandance-db
+        env:
+          - name: MYSQL_DATABASE
+            value: attandance_db
+          - name: MYSQL_USER
+            value: anas
+          - name: MYSQL_PASSWORD
+            value: root
+          - name: MYSQL_ROOT_PASSWORD
+            value: root
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: attandance-db
+  labels:
+    app: attandance-db
+    tier: database
+spec:
+  ports:
+    - port: 3306
+      targetPort: 3306
+  selector:
+    app: attandance-db
+    tier: database
+  clusterIP: None 

@@ -22,9 +22,11 @@ import jakarta.transaction.Transactional;
 public class EventServiceDbImpl implements EventService {
 	private final Logger logger = LoggerFactory.getLogger(EventServiceDbImpl.class);
 	private EventRepository eventRepository;
+	private EventProducer eventProducer;
 
-	public EventServiceDbImpl(EventRepository eventRepository) {
+	public EventServiceDbImpl(EventRepository eventRepository, EventProducer eventProducer) {
 		this.eventRepository = eventRepository;
+		this.eventProducer = eventProducer;
 	}
 
 	@Override
@@ -69,13 +71,13 @@ public class EventServiceDbImpl implements EventService {
 				e.setStatus("Present");
 			}
 		}
-		return  (List<Event>) eventRepository.saveAll(events);
+		return (List<Event>) eventRepository.saveAll(events);
 	}
 
 	@Override
 	public List<Event> publishEvents(LocalDate eventDate) {
 		List<Event> events = eventRepository.findByEventDate(eventDate);
-		EventProducer.produceEvents(events);
+		eventProducer.produceEvents(events);
 		return events;
 	}
 

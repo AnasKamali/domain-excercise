@@ -1,4 +1,4 @@
-package com.sapient.eventApp.exception.handler;
+package com.sapient.attandanceApp.exception.handler;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
@@ -10,21 +10,12 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
-import com.sapient.eventApp.exception.EmployeeNotExistException;
-import com.sapient.eventApp.exception.EventDoesNotExistsException;
+import com.sapient.attandanceApp.exception.EmployeeNotExistException;
+
+
 
 @ControllerAdvice
 public class ExceptionHanler {
-
-	@ExceptionHandler(EventDoesNotExistsException.class)
-	public ResponseEntity<Object> handleCityNotFoundException(EventDoesNotExistsException ex, WebRequest request) {
-
-		Map<String, Object> body = new LinkedHashMap<>();
-		body.put("timestamp", LocalDateTime.now());
-		body.put("message", ex.getLocalizedMessage());
-
-		return new ResponseEntity<>(body, HttpStatus.NO_CONTENT);
-	}
 
 	@ExceptionHandler(EmployeeNotExistException.class)
 	public ResponseEntity<Object> handleCityNotFoundException(EmployeeNotExistException ex, WebRequest request) {
@@ -33,7 +24,7 @@ public class ExceptionHanler {
 		body.put("timestamp", LocalDateTime.now());
 		body.put("message", ex.getLocalizedMessage());
 
-		return new ResponseEntity<>(body, HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
 	}
 
 }
