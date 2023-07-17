@@ -6,5 +6,6 @@ a.	Junit> Code Coverage >80%<br/>
 b.	SIT (BDD: Cucumber or Karate)<br/>
 c.	JMeter<br/>
 3.	Build & Release pipeline: Set up pipeline & Reporting<br/>
+[Jenkins Pipeline ](https://github.com/AnasKamali/domain-excercise/blob/main/attandance-app/Jenkinsfile)
 4.	Entire solution deployable on cloud (Burner account)<br/>
       [deployment.yaml](https://github.com/AnasKamali/domain-excercise/blob/main/kubernetes/deployment.yaml)
