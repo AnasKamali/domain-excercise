@@ -1,8 +1,9 @@
 Milestone 3: Build Phase<br/>
 1.	Microservices Ecosystem with Springboot <br/>
-   following are used:-
- api-gateway, eureka-server, eureka-client, outh2-resource-server, security, spring-starter-test, spring-jpa etc<br/>
+   
 a.	Features Implemented<br/>
+following are used:-
+ api-gateway, eureka-server, eureka-client, outh2-resource-server, security, spring-starter-test, spring-jpa etc<br/>
 <br/>
 b.	Springboot annotations<br/>
 @restcontroller, @transaction, @component, @configuration, @enableEurekaClient, @enableEurekaServer, @Repository, @service
