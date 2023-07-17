@@ -8,7 +8,6 @@ o	EDA Strategy and implementation with MS architecture<br/>
 o	NFRS managed<br/>
 [NFRS.pdf](https://github.com/AnasKamali/domain-excercise/blob/main/Milestone1/NFRS.pdf)<br/>
 <br/>
-
 2.	Sequence diagram: Features Implemented<br/>
 [Sequence Diagram](https://github.com/AnasKamali/domain-excercise/blob/main/Milestone1/Sequential%20Diagrams.docx)<br/>
 <br/>
