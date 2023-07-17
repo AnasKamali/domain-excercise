@@ -26,8 +26,11 @@ b.	API Gateway<br/>
       [discovery server](https://github.com/AnasKamali/domain-excercise/tree/main/discovery-server)<br/>
        [api-gateway service](https://github.com/AnasKamali/domain-excercise/tree/main/api-gateway)<br/>
 4.	Logging & Tooling<br/>
-Using zipkin for traceblity-[](https://github.com/AnasKamali/domain-excercise/blob/main/screenshots/zipkinServerRunning.png)<br/>
+Using zipkin for traceblity-![](https://github.com/AnasKamali/domain-excercise/blob/main/screenshots/zipkinServerRunning.png)<br/>
 a.	Observability: Grafana, cloud monitoring<br/>
+Prometheus Server Screenshot:
+![Alt Text](https://github.com/AnasKamali/domain-excercise/blob/main/screenshots/prometheus.png)
+Grafana Dashboard ScreenShot:
 ![Alt text](https://github.com/AnasKamali/domain-excercise/blob/main/screenshots/grafanaEventApp.png)
 5.	Exception handling<br/>
 [exception handler](https://github.com/AnasKamali/domain-excercise/tree/main/event-app/src/main/java/com/sapient/eventApp/exception/handler)
