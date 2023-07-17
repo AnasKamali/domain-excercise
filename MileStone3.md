@@ -28,6 +28,7 @@ b.	API Gateway<br/>
 4.	Logging & Tooling<br/>
 Using zipkin for traceblity-[](https://github.com/AnasKamali/domain-excercise/blob/main/screenshots/zipkinServerRunning.png)<br/>
 a.	Observability: Grafana, cloud monitoring<br/>
+![Alt text](https://github.com/AnasKamali/domain-excercise/blob/main/screenshots/grafanaEventApp.png)
 5.	Exception handling<br/>
 [exception handler](https://github.com/AnasKamali/domain-excercise/tree/main/event-app/src/main/java/com/sapient/eventApp/exception/handler)
 <br/>
