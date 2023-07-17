@@ -8,11 +8,9 @@ o	EDA Strategy and implementation with MS architecture<br/>
 o	NFRS managed<br/>
 [NFRS.pdf](https://github.com/AnasKamali/domain-excercise/blob/main/Milestone1/NFRS.pdf)<br/>
 <br/>
-<br/>
-<br/>
+
 2.	Sequence diagram: Features Implemented<br/>
 [Sequence Diagram](https://github.com/AnasKamali/domain-excercise/blob/main/Milestone1/Sequential%20Diagrams.docx)<br/>
-<br/>
 <br/>
 3.	Design:<br/>
 o	DDD & Bounded context<br/>
@@ -20,8 +18,6 @@ o	DDD & Bounded context<br/>
 o	Ready heavy – CQRS<br/>
 o	DB selections (NOSQL + RDBMS), ER diagram<br/>
 [ERDiagram and Scripts](https://github.com/AnasKamali/domain-excercise/blob/main/Milestone1/ER%20Diagram%20and%20Scripts.docx)<br/>
-<br/>
-<br/>
 <br/>
 <br/>
 Milestone 2: Set up MVP<br/>
@@ -39,18 +35,12 @@ spring-boot maven pluging for creating image. <br/>
 docker repository for container image management. <br/>
 docker-compose, minkube, kubectl, docker desktop for local deployment and testing. <br/>
 <br/>
-<br/>
-<br/>
 o	Deployment of services on Cloud managed AKS using CI/CD Pipelines (Desired) – Refer to the Bonus Marks section below<br/>
 [deployment.yaml](https://github.com/AnasKamali/domain-excercise/blob/main/kubernetes/deployment.yaml)
-<br/>
-<br/>
 <br/>
 o	Kafka Set up<br/>
 [kafkaimage](https://hub.docker.com/repository/docker/mak8docker/mykafka)<br/>
 [zookeperimage](https://hub.docker.com/repository/docker/mak8docker/myzookeper)
-<br/>
-<br/>
 <br/>
 <br/>
 Milestone 3: Build Phase<br/>
@@ -90,6 +80,7 @@ Using zipkin for traceblity-[](https://github.com/AnasKamali/domain-excercise/bl
 a.	Observability: Grafana, cloud monitoring<br/>
 5.	Exception handling<br/>
 [exception handler](https://github.com/AnasKamali/domain-excercise/tree/main/event-app/src/main/java/com/sapient/eventApp/exception/handler)
+<br/>
 <br/>
 Milestone 4: Testing Phase<br/>
 1.	Testing: <br/>
