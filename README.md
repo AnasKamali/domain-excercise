@@ -55,13 +55,7 @@ c.	Transactions<br/>
 At service level use @Transaction notation for handling transaction with DB.<br/>
 Will be rollbacked if any exception occured inside method.<br/>
 d.	configurations<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+spring-config-server is used for configuration of services.[](https://github.com/AnasKamali/domain-excercise/tree/main/config-server) <br/>
 3.	API Security<br/>
 A seprate branch security is build for security<br/>
 a.	O-Auth2.0<br/>
