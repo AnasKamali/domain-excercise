@@ -93,7 +93,7 @@
 				<configuration>
 					<image>
 						<name>
-							mak8docker/${project.artifactId}:${project.version}</name>
+							mak8docker/${project.artifactId}:security</name>
 					</image>
 					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
 				</configuration>
