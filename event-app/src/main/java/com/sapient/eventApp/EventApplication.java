@@ -8,16 +8,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-import com.sapient.eventApp.entity.Event;
 import com.sapient.eventApp.exception.handler.RestTemplateErrorHandler;
+import com.sapient.eventApp.model.Event;
 import com.sapient.eventApp.util.ObjectSerializer;
 
 @SpringBootApplication
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 public class EventApplication {
 	@Value("${kafka.server:127.0.0.1:29092}")
 	String kafkaServers;

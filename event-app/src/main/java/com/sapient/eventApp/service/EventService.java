@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
-import com.sapient.eventApp.entity.Event;
 import com.sapient.eventApp.exception.EventDoesNotExistsException;
+import com.sapient.eventApp.model.Event;
 
 
 public interface EventService {

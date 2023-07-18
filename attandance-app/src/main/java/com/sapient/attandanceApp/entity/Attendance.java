@@ -2,6 +2,8 @@ package com.sapient.attandanceApp.entity;
 
 import java.time.LocalDate;
 
+import com.sapient.attandanceApp.util.Event;
+
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -83,8 +85,8 @@ public class Attendance {
 		}
 
 		public static Attendance build(Event event) {
-			return new Attendance(new AttendanceId(event.getDate(), event.getId()), event.getStatus(),
-					event.getTotalHourAttanded());
+			return new Attendance(new AttendanceId(event.getEventId().getEventDate(), event.getEventId().getId()),
+					event.getStatus(), event.getTotalHourAttanded());
 		}
 	}
 

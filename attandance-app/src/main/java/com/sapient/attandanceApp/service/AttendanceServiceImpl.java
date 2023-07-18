@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 
 import com.sapient.attandanceApp.consumer.KafkaObjctConsumer;
 import com.sapient.attandanceApp.entity.Attendance;
-import com.sapient.attandanceApp.entity.Event;
 import com.sapient.attandanceApp.entity.Attendance.AttandanceBuilder;
 import com.sapient.attandanceApp.repository.AttendanceRepository;
 import com.sapient.attandanceApp.repository.EmployeeRepository;
+import com.sapient.attandanceApp.util.Event;
 
 import jakarta.transaction.Transactional;
 
@@ -42,7 +42,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 	public void consumeAttendanceEvents() {
 		List<Event> events = kafkaObjctConsumer.consumeAttendance();
 		for (Event event : events) {
-			if (employeeRepository.existsById(event.getId())) {
+			if (employeeRepository.existsById(event.getEventId().getId())) {
 				Attendance attendance = AttandanceBuilder.build(event);
 				attendanceRepository.save(attendance);
 			}
