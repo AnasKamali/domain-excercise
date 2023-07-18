@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.sapient.eventApp.entity.Event;
 import com.sapient.eventApp.exception.EmployeeNotExistException;
 import com.sapient.eventApp.exception.EventDoesNotExistsException;
+import com.sapient.eventApp.model.Event;
+import com.sapient.eventApp.model.EventId;
 import com.sapient.eventApp.service.EventService;
 
 @RestController
@@ -50,7 +51,7 @@ public class EventController {
 	@GetMapping("/swipeOut/{id}")
 	public ResponseEntity<String> swipeOut(@PathVariable("id") int id) throws EventDoesNotExistsException {
 		logger.info("swipe out with id {}", id);
-		Event event = new Event(id, LocalDate.now(), null, LocalTime.now());
+		Event event = new Event(new EventId(id, LocalDate.now()), null, LocalTime.now());
 		eventService.updateEventOnSwipeOut(event);
 		return ResponseEntity.ok("successfully swiped out with id:" + id);
 	}

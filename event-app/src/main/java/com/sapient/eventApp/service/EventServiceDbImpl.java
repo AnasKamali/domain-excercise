@@ -10,13 +10,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.sapient.eventApp.entity.Event;
-import com.sapient.eventApp.entity.EventId;
 import com.sapient.eventApp.exception.EventDoesNotExistsException;
+import com.sapient.eventApp.model.Event;
+import com.sapient.eventApp.model.EventId;
+import com.sapient.eventApp.mongo.repository.EventRepository;
 import com.sapient.eventApp.producer.EventProducer;
-import com.sapient.eventApp.repository.EventRepository;
-
-import jakarta.transaction.Transactional;
 
 @Service
 public class EventServiceDbImpl implements EventService {
@@ -30,11 +28,10 @@ public class EventServiceDbImpl implements EventService {
 	}
 
 	@Override
-	@Transactional
 	public String createEventOnSwipeIn(int id) {
-		Optional<Event> findById = eventRepository.findById(new EventId(id, LocalDate.now()));
+		Optional<Event> findById = eventRepository.findByEventId(new EventId(id, LocalDate.now()));
 		if (findById.isEmpty()) {
-			eventRepository.save(new Event(id, LocalDate.now(), LocalTime.now(), null));
+			eventRepository.insert(new Event(new EventId(id, LocalDate.now()), LocalTime.now(), LocalTime.now()));
 			return "Event Created";
 		} else {
 			return "Event Already Exists";
@@ -42,9 +39,9 @@ public class EventServiceDbImpl implements EventService {
 	}
 
 	@Override
-	@Transactional
 	public String updateEventOnSwipeOut(Event event) throws EventDoesNotExistsException {
-		Optional<Event> findById = eventRepository.findById(new EventId(event.getId(), event.getDate()));
+		Optional<Event> findById = eventRepository
+				.findByEventId(new EventId(event.getEventId().getId(), event.getEventId().getEventDate()));
 		if (findById.isEmpty()) {
 			throw new EventDoesNotExistsException("event does not exists:" + event);
 		} else {
@@ -57,7 +54,6 @@ public class EventServiceDbImpl implements EventService {
 	}
 
 	@Override
-	@Transactional
 	public List<Event> calculateAttandanceForDate(LocalDate eventDate) {
 		List<Event> events = eventRepository.findByEventDate(eventDate);
 		for (Event e : events) {

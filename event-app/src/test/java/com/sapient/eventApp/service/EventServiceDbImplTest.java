@@ -21,10 +21,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.sapient.eventApp.entity.Event;
 import com.sapient.eventApp.exception.EventDoesNotExistsException;
+import com.sapient.eventApp.model.Event;
+import com.sapient.eventApp.model.EventId;
+import com.sapient.eventApp.mongo.repository.EventRepository;
 import com.sapient.eventApp.producer.EventProducer;
-import com.sapient.eventApp.repository.EventRepository;
 
 @ExtendWith(MockitoExtension.class)
 class EventServiceDbImplTest {
@@ -44,7 +45,7 @@ class EventServiceDbImplTest {
 	@BeforeEach
 	public void setup() {
 		id = 1;
-		event = new Event(id, LocalDate.now(), LocalTime.now(),
+		event = new Event(new EventId( id, LocalDate.now()), LocalTime.now(),
 				LocalTime.now().plus(Long.valueOf(8l), ChronoUnit.HOURS));
 		eventOptional = Optional.of(event);
 		eventDate = LocalDate.now();
@@ -53,27 +54,27 @@ class EventServiceDbImplTest {
 
 	@Test
 	void createEventOnSwipeInSuccess() {
-		when(eventRepository.findById(ArgumentMatchers.any())).thenReturn(Optional.empty());
+		when(eventRepository.findByEventId(ArgumentMatchers.any())).thenReturn(Optional.empty());
 		String createEvent = eventServiceDbImpl.createEventOnSwipeIn(1);
 		assertEquals("Event Created", createEvent);
 	}
 
 	@Test
 	void createEventOnSwipeInFailure() {
-		when(eventRepository.findById(ArgumentMatchers.any())).thenReturn(eventOptional);
+		when(eventRepository.findByEventId(ArgumentMatchers.any())).thenReturn(eventOptional);
 		String createEvent = eventServiceDbImpl.createEventOnSwipeIn(1);
 		assertEquals("Event Already Exists", createEvent);
 	}
 
 	@Test
 	void updateEventFailure() throws EventDoesNotExistsException {
-		when(eventRepository.findById(ArgumentMatchers.any())).thenReturn(Optional.empty());
+		when(eventRepository.findByEventId(ArgumentMatchers.any())).thenReturn(Optional.empty());
 		assertThrows(EventDoesNotExistsException.class,()-> eventServiceDbImpl.updateEventOnSwipeOut( event)) ;
 	}
 
 	@Test
 	void updateEventSuccess() throws EventDoesNotExistsException {
-		when(eventRepository.findById(ArgumentMatchers.any())).thenReturn(eventOptional);
+		when(eventRepository.findByEventId(ArgumentMatchers.any())).thenReturn(eventOptional);
 		when(eventRepository.save(ArgumentMatchers.any())).thenReturn(event);
 		
 		assertDoesNotThrow(()->eventServiceDbImpl.updateEventOnSwipeOut( event));
@@ -97,11 +98,11 @@ class EventServiceDbImplTest {
 	}
 
 	List<Event> getEvents() {
-		Event present = new Event(id, LocalDate.now(), LocalTime.now(),
+		Event present = new Event(new EventId(id, LocalDate.now()), LocalTime.now(),
 				LocalTime.now().plus(Long.valueOf(8l), ChronoUnit.HOURS));
-		Event absent = new Event(id, LocalDate.now(), LocalTime.now(),
+		Event absent = new Event(new EventId(id, LocalDate.now()), LocalTime.now(),
 				LocalTime.now().plus(Long.valueOf(8l), ChronoUnit.HOURS));
-		Event halfday = new Event(id, LocalDate.now(), LocalTime.now(),
+		Event halfday = new Event(new EventId(id, LocalDate.now()), LocalTime.now(),
 				LocalTime.now().plus(Long.valueOf(8l), ChronoUnit.HOURS));
 		return Arrays.asList(present, absent, halfday);
 	}

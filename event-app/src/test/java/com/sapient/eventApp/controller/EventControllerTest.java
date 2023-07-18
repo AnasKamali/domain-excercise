@@ -11,10 +11,12 @@ import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.client.RestTemplate;
 
-import com.sapient.eventApp.entity.Event;
 import com.sapient.eventApp.exception.EventDoesNotExistsException;
+import com.sapient.eventApp.model.Event;
 import com.sapient.eventApp.service.EventServiceDbImpl;
 
 @WebMvcTest(EventController.class)
@@ -22,12 +24,20 @@ class EventControllerTest {
 
 	@MockBean
 	private EventServiceDbImpl eventServiceDbImpl;
+	@MockBean
+	private RestTemplate restTemplate;
 
 	@Autowired
 	private MockMvc mockMvc;
 
 	@Test
 	void swipeIn() throws Exception {
+		when(restTemplate.exchange(
+                ArgumentMatchers.anyString(),
+                ArgumentMatchers.any(),
+                ArgumentMatchers.any(),
+                ArgumentMatchers.<Class<String>>any()))
+             .thenReturn(ResponseEntity.ok(null));
         when(eventServiceDbImpl.createEventOnSwipeIn(ArgumentMatchers.anyInt())).thenReturn("Event Created");
         mockMvc.perform(get("/swipeIn/1")).andExpect(status().isOk());
         

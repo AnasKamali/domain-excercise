@@ -19,9 +19,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.sapient.attandanceApp.consumer.KafkaObjctConsumer;
 import com.sapient.attandanceApp.entity.Attendance;
-import com.sapient.attandanceApp.entity.Event;
 import com.sapient.attandanceApp.repository.AttendanceRepository;
 import com.sapient.attandanceApp.repository.EmployeeRepository;
+import com.sapient.attandanceApp.util.Event;
+import com.sapient.attandanceApp.util.EventId;
 
 @ExtendWith(MockitoExtension.class)
 class AttendanceServiceImplTest {
@@ -51,7 +52,7 @@ class AttendanceServiceImplTest {
 
 	@Test
 	void consumeAttendanceEvents() {
-		when(kafkaObjctConsumer.consumeAttendance()).thenReturn(Arrays.asList(new Event()));
+		when(kafkaObjctConsumer.consumeAttendance()).thenReturn(Arrays.asList(new Event(new EventId())));
 		when(employeeRepository.existsById(ArgumentMatchers.anyInt())).thenReturn(true);
 		when(attendanceRepository.save(ArgumentMatchers.any())).thenReturn(new Attendance());
 

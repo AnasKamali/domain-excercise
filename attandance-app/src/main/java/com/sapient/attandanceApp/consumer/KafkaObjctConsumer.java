@@ -11,7 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.sapient.attandanceApp.entity.Event;
+import com.sapient.attandanceApp.util.Event;
+
 
 @Component
 public class KafkaObjctConsumer {

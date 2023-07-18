@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.sapient.eventApp.entity.Event;
+import com.sapient.eventApp.model.Event;
 
 @Component
 public class EventProducer {
@@ -24,9 +24,9 @@ public class EventProducer {
 
 	public void produceEvents(List<Event> events) {
 		if (!events.isEmpty()) {
-//			Assert.notNull(kafkaProducer, "Not able to connect to kafka server");
 			for (Event event : events) {
-				kafkaProducer.send(new ProducerRecord<>(kafkaTopic, Integer.toString(event.getId()), event),
+				kafkaProducer.send(
+						new ProducerRecord<>(kafkaTopic, Integer.toString(event.getEventId().getId()), event),
 						(metadata, exception) -> {
 							if (exception == null) {
 								logger.info(metadata.topic());

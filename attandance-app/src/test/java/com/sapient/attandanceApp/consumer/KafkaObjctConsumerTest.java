@@ -15,7 +15,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.sapient.attandanceApp.entity.Event;
+import com.sapient.attandanceApp.util.Event;
+
 
 @ExtendWith(MockitoExtension.class)
 class KafkaObjctConsumerTest {

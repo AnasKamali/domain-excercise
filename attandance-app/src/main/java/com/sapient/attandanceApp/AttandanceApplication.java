@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 
-import com.sapient.attandanceApp.entity.Event;
+import com.sapient.attandanceApp.util.Event;
 import com.sapient.attandanceApp.util.ObjectDeserializer;
 
 @SpringBootApplication
