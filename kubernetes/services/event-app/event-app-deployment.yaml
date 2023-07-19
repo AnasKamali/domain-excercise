@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert
+    kompose.version: 1.30.0 (9d8dcb518)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: event-app
+  name: event-app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: event-app
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert
+        kompose.version: 1.30.0 (9d8dcb518)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/newfolder-default: "true"
+        io.kompose.service: event-app
+    spec:
+      containers:
+        - env:
+            - name: EUREKA.CLIENT.SERVICEURL.DEFAULTZONE
+              value: http://service-discovery:8084/eureka/
+            - name: MANAGEMENT.ZIPKIN.TRACING.ENDPOINT
+              value: http://zipkin:9411/api/v2/spans
+            - name: SPRING.DATASOURCE.URL
+              value: jdbc:mysql://event-db:3306/event_db
+          image: mak8docker/event-app:0.0.2-SNAPSHOT
+          name: event-app
+          ports:
+            - containerPort: 8081
+              hostPort: 8081
+              protocol: TCP
+          resources: {}
+          securityContext:
+            capabilities:
+              add:
+                - SYS_NICE
+      restartPolicy: Always
+status: {}
